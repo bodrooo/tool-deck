@@ -3,6 +3,7 @@
   "packageManager": "yarn@4.6.0",
   "version": "1.0.0",
   "workspaces": [
-    "fe"
+    "fe",
+    "be"
   ]
 }
