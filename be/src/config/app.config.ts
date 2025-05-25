@@ -10,6 +10,6 @@ export class AppConfig {
 }
 
 export default registerConfig('app', AppConfig, ({ env }) => ({
-  app: env.APP_NAME,
+  appName: env.APP_NAME,
   port: env.APP_PORT,
 }));

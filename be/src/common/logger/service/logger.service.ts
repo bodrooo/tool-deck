@@ -2,6 +2,7 @@ import { Inject, Injectable, Scope } from '@nestjs/common';
 import Logger, { LogData, LogLevel } from '../type/logger.type';
 import { WinstonService } from './winston.service';
 import { INQUIRER } from '@nestjs/core';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable({ scope: Scope.TRANSIENT })
 export class LoggerService implements Logger {
@@ -11,9 +12,10 @@ export class LoggerService implements Logger {
   constructor(
     private winstonService: WinstonService,
     @Inject(INQUIRER) parentClass: Object,
+    private config: ConfigService,
   ) {
     this.sourceClass = parentClass?.constructor?.name;
-    this.appName = 'TEst 123123';
+    this.appName = this.config.get<string>('app.appName') as string;
   }
 
   public log(
